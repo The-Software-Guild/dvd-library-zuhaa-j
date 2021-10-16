@@ -1,8 +1,37 @@
 package dvdlibrary.dto;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class DVD {
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DVD dvd = (DVD) o;
+        return Objects.equals(title, dvd.title) && Objects.equals(releaseDate, dvd.releaseDate) && Objects.equals(MPAARating, dvd.MPAARating) && Objects.equals(directorName, dvd.directorName) && Objects.equals(studio, dvd.studio) && Objects.equals(userNote, dvd.userNote);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, releaseDate, MPAARating, directorName, studio, userNote);
+    }
+
+    @Override
+    public String toString() {
+        return "DVD{" +
+                "title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", MPAARating='" + MPAARating + '\'' +
+                ", directorName='" + directorName + '\'' +
+                ", studio='" + studio + '\'' +
+                ", userNote='" + userNote + '\'' +
+                '}';
+    }
+
     private String title;
-    private String releaseDate;
+    private LocalDate releaseDate;
     private String MPAARating;
     private String directorName;
     private String studio;
@@ -16,11 +45,11 @@ public class DVD {
         return title;
     }
 
-    public String getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 

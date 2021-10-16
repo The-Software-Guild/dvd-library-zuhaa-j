@@ -8,7 +8,16 @@ import java.util.*;
 public class DVDLibraryDaoFileImpl implements DVDLibraryDao{
     private Map<String, DVD> dvds = new HashMap<>();
 
-    public static final String DVD_LIBRARY_FILE = "src/dvdlibrary.txt";
+    private final String DVD_LIBRARY_FILE;
+
+    public DVDLibraryDaoFileImpl(){
+        DVD_LIBRARY_FILE = "dvdlibrary.txt";
+    }
+
+    public DVDLibraryDaoFileImpl(String dvdLibraryTextFile){
+        DVD_LIBRARY_FILE = dvdLibraryTextFile;
+    }
+
     public static final String DELIMITER = "::";
 
     public DVD addDVD(String title, DVD dvd) throws DVDLibraryDaoException{

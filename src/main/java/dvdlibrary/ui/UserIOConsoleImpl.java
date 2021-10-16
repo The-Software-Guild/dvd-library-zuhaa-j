@@ -1,5 +1,7 @@
 package dvdlibrary.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO{
@@ -15,6 +17,12 @@ public class UserIOConsoleImpl implements UserIO{
         System.out.println(prompt);
         String response = userInput.nextLine();
         return response;
+    }
+
+    public LocalDate readDate(String prompt) {
+        System.out.println(prompt);
+        LocalDate date = LocalDate.parse(input.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return date;
     }
 
     public int readInt(String prompt){

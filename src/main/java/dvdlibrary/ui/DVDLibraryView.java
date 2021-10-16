@@ -2,6 +2,7 @@ package dvdlibrary.ui;
 
 import dvdlibrary.dto.DVD;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class DVDLibraryView {
@@ -22,11 +23,7 @@ public class DVDLibraryView {
 
     public DVD getNewDVDInfo() {
         String title = io.readString("      Please enter Title of DVD.");
-        String releaseDate = io.readString("      Please enter Release Date of DVD (DD-MM-YYYY).");
-        while (!(releaseDate.matches("^\\d{2}-\\d{2}-\\d{4}$"))){
-            io.print("      Release Date must be of form DD-MM-YYYY");
-            releaseDate = io.readString("      Please enter Release Date of DVD (DD-MM-YYYY).");
-        }
+        LocalDate releaseDate = io.readDate("      Please enter Release Date of DVD (DD-MM-YYYY).");
         String MPAARating = io.readString("      Please enter MPAA Rating of DVD.");
         String directorName = io.readString("      Please enter Director's Name of DVD.");
         String studio = io.readString("      Please enter Studio of DVD.");
@@ -108,11 +105,7 @@ public class DVDLibraryView {
         int choice = io.readInt("      Which field would you like to edit?",1,5);
         switch (choice){
             case 1:
-                String releaseDate = io.readString("      Enter new Release Date of DVD (DD-MM-YYYY).");
-                while (!(releaseDate.matches("^\\d{2}-\\d{2}-\\d{4}$"))){
-                    io.print("      Release Date must be of form DD-MM-YYYY");
-                    releaseDate = io.readString("      Enter new Release Date of DVD (DD-MM-YYYY).");
-                }
+                LocalDate releaseDate = io.readDate("      Enter new Release Date of DVD (DD-MM-YYYY).");
                 dvd.setReleaseDate(releaseDate);
                 break;
             case 2:
